@@ -69,7 +69,7 @@ class Posts extends Component
     }
 
     public function filterPostByUser($user_id){
-        dd(request());
+        
         $this->posts = [];
         $this->posts = Post::where('author_id', $user_id)->get();
     }

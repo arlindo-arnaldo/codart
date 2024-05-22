@@ -75,7 +75,7 @@
               <span class="avatar me-2" style="background-image: url(/storage/{{$post->thumbnail->path}})"></span>
               <div class="flex-fill">
                 <div class="font-weight-medium">
-                  <a href="/{{$post->slug}}" class="text-reset" style="text-decoration: none;">{{$post->title}}</a>
+                  <a href="/{{$post->slug}}" target="blank" class="text-reset" style="text-decoration: none;">{{$post->title}}</a>
                   
                 </div>
               </div>
