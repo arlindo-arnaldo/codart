@@ -1,0 +1,1 @@
+@livewire('includes.top-header')

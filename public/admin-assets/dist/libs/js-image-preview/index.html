@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Carregue uma foto</title>
+</head>
+<body>
+    <h1>Selecione uma imagem</h1>
+    <form enctype="multipart/form-data">
+        <input type="file" name="image" id="image" onchange="previewImage()">
+    </form>
+    <br>
+    <div>
+        <img style="width: 300px;height: 300px;" id="preview" >
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
