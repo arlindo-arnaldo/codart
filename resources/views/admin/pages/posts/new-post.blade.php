@@ -5,7 +5,11 @@
 @section('content')
 
 @include('admin.includes.modal')
-    
+    @if (session('image'))
+        @php
+            session()->forget('image')
+        @endphp
+    @endif
     <form action="{{route('admin.posts.save-post')}}" method="POST" class="cards-row" enctype="multipart/form-data">
         @csrf
         <div class="card-body">

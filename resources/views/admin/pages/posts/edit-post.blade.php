@@ -2,23 +2,15 @@
 @section('title','Editar artigo')
 
 @section('page-title','Editar artigo')
-@push('styles')
-    <style>
-        #tumb_view:hover{
-        border: 1px dashed rgb(83, 83, 83);
-        cursor: pointer;
-        
-    }
-    </style>
-@endpush
+
 
 @section('content')
 @include('admin.includes.modal')
 
 
-<button onclick="showModal()">Abrir</button> <br>
 
-<form action="{{route('admin.posts.save-post')}}" method="POST" class="cards-row" enctype="multipart/form-data">
+
+<form action="{{route('admin.posts.update-post', $post->id)}}" method="POST" class="cards-row" enctype="multipart/form-data">
     @csrf
     <div class="card-body">
         <div class="row">
@@ -80,8 +72,8 @@
                 <div class="card mt-1 " style="border-radius: 0%">
                     
                     <div class="card-body">
-                       <h4>Imagem destacada</h4>
-                       <div style="text-align: center" class="mb-3">
+                       
+                       <!-- <div style="text-align: center" class="mb-3">
                         @if (!$post->thumb)
                             <a class="avatar avatar-upload rounded" onclick="
                                 event.preventDefault();
@@ -95,7 +87,10 @@
                         @endif
                         
                         <input type="file" name="thumb" id="photo" class="d-none">
-                      </div>
+                      </div>-->
+
+                      @livewire('posts.featured-image')
+
                       @error('thumb')
                       <span class="text-danger">{{$message}}</span>
                  @enderror
@@ -124,8 +119,3 @@
 </script>
 @endpush
 
-@push('scripts')
-<script>
-    
-</script>
-@endpush

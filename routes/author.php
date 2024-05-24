@@ -4,7 +4,7 @@ use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\Medias\MediaController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Livewire\Modal\UploadFile;
-use Nette\Utils\Random;
+
 
 Route::prefix('/admin')->name('admin.')->group(function(){
     Route::middleware('auth:web')->group(function(){
@@ -31,7 +31,6 @@ Route::prefix('/admin')->name('admin.')->group(function(){
             Route::view('new-post', 'admin.pages.posts.new-post')->name('new-post');
             Route::get('edit-post/{id}', [PostController::class, 'editPost'])->name('edit-post');
             Route::view('categories', 'admin.pages.posts.categories')->name('categories')->middleware('isAdmin');
-            Route::view('modal', 'modal');
             Route::post('save-post', [PostController::class, 'savePost'])->name('save-post');
             Route::post('delete-post/{id}', [PostController::class, 'deletePost'])->name('delete-post');
             Route::post('update-post/{id}', [PostController::class, 'updatePost'])->name('update-post');

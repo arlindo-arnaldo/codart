@@ -8,9 +8,8 @@
 @endpush
 <div>
     <div class="card-body">
-      @if (session('image_id'))
-       hjkhjkhjkhjkjh
-
+      @if (session('image'))
+        @php $photo = session('image') @endphp
       @endif
       
         <h4>Imagem destacada</h4>
