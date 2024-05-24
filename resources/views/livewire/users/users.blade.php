@@ -40,7 +40,7 @@
                     {{$user->userType->name}}
                   </td>
                   <td class="text-muted" data-label="Posts">
-                    0
+                    {{$user->posts->count()}}
                   </td>
                 <td>
                     <div class="drop">
