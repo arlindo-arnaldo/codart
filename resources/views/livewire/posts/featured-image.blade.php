@@ -1,7 +1,7 @@
 @push('styles')
     <style>
       #thumb:hover{
-        border: 2px dashed rgb(46, 46, 195);
+        border: 1px dashed rgb(120, 120, 120);
         cursor: pointer;
       }
     </style>
