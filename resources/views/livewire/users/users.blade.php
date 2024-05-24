@@ -1,10 +1,15 @@
 <div>
-  @if (session('success'))
-  <div class="alert alert-success alert-dismissible">
-    {{session('success')}}
-    <button class="btn-close" data-bs-dismiss="alert"></button>
+  <div class="row">
+  <div class="col-md-7"></div>
+  <div class="col-md-5">
+    @if (session('success'))
+    <div class="alert alert-success alert-dismissible">
+      {{session('success')}}
+      <button class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+    @endif
+    </div>
   </div>
-  @endif
 
         <div class="card">
           <div class="table-responsive">

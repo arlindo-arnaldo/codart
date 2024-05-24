@@ -1,10 +1,15 @@
 <div>
-    @if (session('success'))
-      <div class="alert alert-success alert-dismissible">
+  <div class="row">
+    <div class="col-md-7"></div>
+    <div class="col-md-5">
+      @if (session('success'))
+      <div class="alert alert-success alert-dismissible fadeIn" style="color: rgb(58, 58, 58);">
         {{session('success')}}
         <button class="btn-close" data-bs-dismiss="alert"></button>
       </div>
-    @endif
+      @endif
+      </div>
+    </div>
       <form class="card" wire:submit.prevent="save">
           <div class="card-header">
           </div>
