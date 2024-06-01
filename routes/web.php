@@ -15,9 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    //return view('welcome');
-    return Hash::make('12345');
-   
+    return view('site.pages.home');   
 });
 
 Route::get('/setup', function(){
