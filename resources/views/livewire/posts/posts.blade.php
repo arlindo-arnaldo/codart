@@ -67,7 +67,7 @@
              <tr>
           <td data-label="Nome de utilizador" 
               @if (session('success'))
-              @if ($post->id == $last_modified) style="border-left: 5px solid rgb(33, 103, 0)" @endif
+              @if ($post->id == $last_modified) style="border-left: 3px solid rgb(62, 174, 10)" @endif
               @endif
           >
             
@@ -117,7 +117,7 @@
                 @if (!$post->trashed())
                 {{$post->is_active ? 'Publicado' : 'Rascunho'}} <br> {{date('d-m-Y', strtotime($post->created_at))}} ás {{date('h:i', strtotime($post->created_at))}}
                 @else
-                  Última modificação <br> {{date('d-m-Y', strtotime($post->created_at))}} ás {{date('h:i', strtotime($post->updated_at))}}
+                  Última modificação <br> {{date('d-m-Y', strtotime($post->deleted_at))}} ás {{date('h:i', strtotime($post->deleted_at))}}
                 @endif
               </td>
             

@@ -53,9 +53,9 @@ class PostController extends Controller
             $last_saved_post = Post::latest()->limit(1)->get();
             $id = $last_saved_post[0]['id'];
             $slug = $last_saved_post[0]['slug'];
-            return redirect()->route('admin.posts.posts')->with('success', ['id' => $id, 'msg' => 'Post adicionado com sucesso', 'slug' => $slug]);
+            return redirect()->route('admin.posts.posts')->with('success', ['id' => $id, 'msg' => 'Artigo adicionado com sucesso', 'slug' => $slug]);
         } else {
-            session()->flash('fail', 'Ocorreu um erro ao tentar salvar o post');
+            session()->flash('fail', 'Ocorreu um erro ao tentar salvar o artigo');
             return redirect()->route('admin.posts.posts');
         }
     }
