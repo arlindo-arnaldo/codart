@@ -16,7 +16,8 @@
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
         "livewire/livewire": "^2.12",
-        "nette/utils": "^3.2"
+        "nette/utils": "^3.2",
+        "predis/predis": "^2.2"
     },
     "require-dev": {
         "facade/ignition": "^2.3.6",

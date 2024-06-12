@@ -13,7 +13,7 @@
               <article class="card article-card">
                 <a href="article.html">
                   <div class="card-image">
-                    <div class="post-info"> <span class="text-uppercase">04 Jun 2021</span>
+                    <div class="post-info"> <span class="text-uppercase">{{date('d M Y', strtotime($latest_post[0]['created_at']))}}</span>
                       <span class="text-uppercase">3 minutes read</span>
                     </div>
                     <img loading="lazy" decoding="async" src="/site-assets/images/post/post-1.jpg" alt="Post Thumbnail" class="w-100">
@@ -21,14 +21,14 @@
                 </a>
                 <div class="card-body px-0 pb-1">
                   <ul class="post-meta mb-2">
-                    <li> <a href="#!">travel</a>
-                      <a href="#!">news</a>
+                     <li>
+                      <a href="{{$latest_post[0]['category']['slug']}}">{{$latest_post[0]['category']['name']}}</a>
+                      <a href="{{$latest_post[0]['subcategory']['slug']}}">{{$latest_post[0]['subcategory']['name']}}</a>
                     </li>
                   </ul>
-                  <h2 class="h1"><a class="post-title" href="article.html">Is it Ethical to Travel Now?
-                      With that Freedom Comes Responsibility.</a></h2>
+                  <h2 class="h1"><a class="post-title" href="{{$latest_post[0]['slug']}}">{{$latest_post[0]['title']}}.</a></h2>
                   <p class="card-text">Heading Here is example of hedings. You can use this heading by following markdownify rules. For example: use # for heading 1 and use ###### for heading 6.</p>
-                  <div class="content"> <a class="read-more-btn" href="article.html">Read Full Article</a>
+                  <div class="content"> <a class="read-more-btn" href="{{$latest_post[0]['slug']}}">Ler mais</a>
                   </div>
                 </div>
               </article>
@@ -116,7 +116,7 @@
                 <div class="card-image">
                   <div class="post-info"> <span class="text-uppercase">1 minutes read</span>
                   </div>
-                  <img loading="lazy" decoding="async" src="images/post/post-9.jpg" alt="Post Thumbnail" class="w-100">
+                  <img loading="lazy" decoding="async" src="/site-assets/images/post/post-9.jpg" alt="Post Thumbnail" class="w-100">
                 </div>
                 <div class="card-body px-0 pb-1">
                   <h3><a class="post-title post-title-sm"
@@ -141,14 +141,14 @@
                 </div>
               </a>
               <a class="media align-items-center" href="article.html">
-                <img loading="lazy" decoding="async" src="images/post/post-5.jpg" alt="Post Thumbnail" class="w-100">
+                <img loading="lazy" decoding="async" src="/site-assets/images/post/post-5.jpg" alt="Post Thumbnail" class="w-100">
                 <div class="media-body ml-3">
                   <h3 style="margin-top:-5px">Perfect For Fashion</h3>
                   <p class="mb-0 small">Lorem ipsum dolor sit amet, consectetur adipiscing …</p>
                 </div>
               </a>
               <a class="media align-items-center" href="article.html">
-                <img loading="lazy" decoding="async" src="images/post/post-9.jpg" alt="Post Thumbnail" class="w-100">
+                <img loading="lazy" decoding="async" src="/site-assets/images/post/post-9.jpg" alt="Post Thumbnail" class="w-100">
                 <div class="media-body ml-3">
                   <h3 style="margin-top:-5px">Record Utra Smooth Video</h3>
                   <p class="mb-0 small">Lorem ipsum dolor sit amet, consectetur adipiscing …</p>
