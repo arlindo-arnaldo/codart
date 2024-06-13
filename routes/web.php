@@ -19,7 +19,7 @@ Route::controller(BlogController::class)->group(function () {
 
     Route::get('/','index');
     Route::get('/{slug}', 'show')->name('post');
-    Route::get('/categories/{slug}')->name('category');
+    Route::get('/categories/{slug}', 'showCategory')->name('category');
 });
 
 
