@@ -34,10 +34,11 @@ class BlogController extends Controller
             ->limit(4)
             ->inRandomOrder()
             ->get();
-            
-
-        
-        
         return view('site.pages.home', compact(['latest_post', 'posts', 'recommended_posts']));
+    }
+
+    public function show($slug){
+        $post = Post::where('slug', $slug)->limit(1)->first();
+        dd($post);
     }
 }

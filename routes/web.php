@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [BlogController::class, 'index']);
+Route::get('/{slug}', [BlogController::class, 'show']);
 
 Route::get('/setup', function(){
 
