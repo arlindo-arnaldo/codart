@@ -29,7 +29,8 @@ class BlogController extends Controller
 
     public function show($slug)
     {
-        $post = $this->post->where('slug', $slug)->limit(1)->first();
+        $post = $this->post->where('slug', $slug)
+        ->first();
         return view('site.pages.single-post', compact(['post']));
     }
 }
