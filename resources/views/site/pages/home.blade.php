@@ -22,6 +22,7 @@
                 <div class="card-body px-0 pb-1">
                   <ul class="post-meta mb-2">
                      <li>
+                      <a href="{{$latest_post->category->slug}}">{{$latest_post->category->name}}</a>
                       <a href="{{$latest_post->subcategory->slug}}">{{$latest_post->subcategory->name}}</a>
                     </li>
                   </ul>

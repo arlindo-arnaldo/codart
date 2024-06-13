@@ -37,7 +37,7 @@ class PostController extends Controller
             $this->post->category_id = 1;
             $this->post->subcategory_id = null;
         } elseif ($request->category_id == null && $request->subcategory_id != null) {
-            $this->post->category_id = null;
+            $this->post->category_id = 1;
             $this->post->subcategory_id = $request->subcategory_id;
         } elseif ($request->category_id != null && $request->subcategory_id == null) {
             $this->post->category_id = $request->category_id;
@@ -110,7 +110,7 @@ class PostController extends Controller
             $this->post->category_id = 1;
             $this->post->subcategory_id = null;
         } elseif ($request->category_id == null && $request->subcategory_id != null) {
-            $this->post->category_id = null;
+            $this->post->category_id = 1;
             $this->post->subcategory_id = $request->subcategory_id;
         } elseif ($request->category_id != null && $request->subcategory_id == null) {
             $this->post->category_id = $request->category_id;
