@@ -51,7 +51,7 @@
                     </li>
                   </ul>
                   <h2><a class="post-title" href="{{$post->slug}}l">{{$post->title}}</a></h2>
-                  <p class="card-text">{{Str::ucfirst(Str::words(strip_tags($post->body), 10, '...'))}}</p>
+                  <p class="card-text">{{Str::ucfirst(Str::words(strip_tags($post->body), 20, '...'))}}</p>
                   <div class="content"> <a class="read-more-btn" href="{{$post->slug}}">Ler Mais</a>
                   </div>
                 </div>
@@ -122,7 +122,7 @@
                 <img loading="lazy" decoding="async" src="/storage/{{$post->thumbnail->path}}" alt="Post Thumbnail" class="w-100">
                 <div class="media-body ml-3">
                   <h3 style="margin-top:-5px">{{$post->title}}</h3>
-                  <p class="mb-0 small">Heading Here is example of hedings. You can use …</p>
+                  <p class="mb-0 small">{{Str::ucfirst(Str::words(strip_tags($post->body), 10, '...'))}}</p>
                 </div>
               </a>
               @endforeach

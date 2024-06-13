@@ -26,7 +26,7 @@ class BlogController extends Controller
         ->with('author')
         ->with('thumbnail')
         ->first();
-        $latest_post->body = Str::ucfirst(Str::words(strip_tags($latest_post->body), 10, '...'));
+        $latest_post->body = Str::ucfirst(Str::words(strip_tags($latest_post->body), 35, '...'));
 
         $recommended_posts = Post::with('author')
             ->with('subcategory')
