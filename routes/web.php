@@ -15,10 +15,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [BlogController::class, 'index']);
-Route::get('/{slug}', [BlogController::class, 'show']);
+Route::controller(BlogController::class)->group(function () {
 
-Route::get('/setup', function(){
+    Route::get('/','index');
+    Route::get('/{slug}', 'show')->name('post');
+    Route::get('/categories/{slug}')->name('category');
+});
+
+
+
+
+Route::get('/setup', function () {
 
     /*Cria os niveis de acesso*/
     $type = new \App\Models\Type();
@@ -48,5 +55,4 @@ Route::get('/setup', function(){
     $category->save();
 
     return "Ambiente Configurado";
-    
 });

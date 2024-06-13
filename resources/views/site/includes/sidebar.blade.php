@@ -19,7 +19,7 @@
               <div class="widget-list">
 
                 @foreach (recommendedPosts() as $post)
-                <a class="media align-items-center" href="{{$post->slug}}">
+                <a class="media align-items-center" href="{{route('post', $post->slug)}}">
                   <img loading="lazy" decoding="async" src="/storage/{{$post->thumbnail->path}}" alt="Post Thumbnail" class="w-100">
                   <div class="media-body ml-3">
                     <h3 style="margin-top:-5px">{{$post->title}}</h3>
@@ -39,9 +39,9 @@
             <div class="widget-body">
               <ul class="widget-list">
                 @foreach (\App\Models\Category::with('child')->get() as $category)
-                <li><a href="#!">{{$category->name}}<span class="ml-auto">({{$category->posts->count()}})</span></a>
+                <li><a href="{{route('category', $category->slug)}}">{{$category->name}}<span class="ml-auto">({{$category->posts->count()}})</span></a>
                   @foreach ($category->child as $subcategory)
-                <li><a href="#!">{{$subcategory->name}}<span class="ml-auto">({{$subcategory->posts->count()}})</span></a>
+                <li><a href="{{route('category', $subcategory->slug)}}">{{$subcategory->name}}<span class="ml-auto">({{$subcategory->posts->count()}})</span></a>
                   @endforeach
 
                 </li>

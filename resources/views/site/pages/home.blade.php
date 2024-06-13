@@ -22,13 +22,13 @@
               <div class="card-body px-0 pb-1">
                 <ul class="post-meta mb-2">
                   <li>
-                    <a href="{{latestPost()->category->slug}}">{{latestPost()->category->name}}</a>
-                    <a href="{{latestPost()->subcategory->slug}}">{{latestPost()->subcategory->name}}</a>
+                    <a href="{{route('category',latestPost()->category->slug)}}">{{latestPost()->category->name}}</a>
+                    <a href="{{route('category',latestPost()->subcategory->slug)}}">{{latestPost()->subcategory->name}}</a>
                   </li>
                 </ul>
-                <h2 class="h1"><a class="post-title" href="{{latestPost()->slug}}">{{latestPost()->title}}.</a></h2>
+                <h2 class="h1"><a class="post-title" href="{{route('post', latestPost()->slug)}}">{{latestPost()->title}}.</a></h2>
                 <p class="card-text">{{ latestPost()->body }}</p>
-                <div class="content"> <a class="read-more-btn" href="{{latestPost()->slug}}">Ler mais</a>
+                <div class="content"> <a class="read-more-btn" href="{{route('post', latestPost()->slug)}}">Ler mais</a>
                 </div>
               </div>
             </article>
@@ -47,10 +47,14 @@
               </a>
               <div class="card-body px-0 pb-0">
                 <ul class="post-meta mb-2">
-                  <li> <a href="#!">travel</a>
+                  <li> <a href="{{route('category', $post->category->slug)}}">{{$post->category->name}}</a>
                   </li>
+                  @if ($post->subcategory)
+                  <li> <a href="{{route('category', $post->subcategory->slug)}}">{{$post->subcategory->name}}</a>
+                  </li>
+                  @endif
                 </ul>
-                <h2><a class="post-title" href="{{$post->slug}}">{{$post->title}}</a></h2>
+                <h2><a class="post-title" href="{{route('post', $post->slug)}}">{{$post->title}}</a></h2>
                 <p class="card-text">{{Str::ucfirst(Str::words(strip_tags($post->body), 20, '...'))}}</p>
                 <div class="content"> <a class="read-more-btn" href="{{$post->slug}}">Ler Mais</a>
                 </div>
