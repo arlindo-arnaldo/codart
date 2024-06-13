@@ -8,21 +8,28 @@ use Illuminate\Support\Str;
 
 class BlogController extends Controller
 {
+    protected $post;
     
-   public function index(){
-        $posts = Post::orderBy('created_at', 'desc')
-        ->limit(6)
-        ->skip(1)
-        ->with('category')
-        ->with('subcategory')
-        ->with('author')
-        ->with('thumbnail')
-        ->get();
+    public function __construct(Post $post)
+    {
+        $this->post = $post;
+    }
+    public function index()
+    {
+        $posts = $this->post->orderBy('created_at', 'desc')
+            ->limit(6)
+            ->skip(1)
+            ->with('category')
+            ->with('subcategory')
+            ->with('author')
+            ->with('thumbnail')
+            ->get();
         return view('site.pages.home', compact(['posts']));
     }
 
-    public function show($slug){
-        $post = Post::where('slug', $slug)->limit(1)->first();
-        return view('site.pages.single-post');
+    public function show($slug)
+    {
+        $post = $this->post->where('slug', $slug)->limit(1)->first();
+        return view('site.pages.single-post', compact(['post']));
     }
 }
