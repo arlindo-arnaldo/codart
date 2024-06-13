@@ -22,7 +22,6 @@
                 <div class="card-body px-0 pb-1">
                   <ul class="post-meta mb-2">
                      <li>
-                      <a href="{{$latest_post->category->slug}}">{{$latest_post->category->name}}</a>
                       <a href="{{$latest_post->subcategory->slug}}">{{$latest_post->subcategory->name}}</a>
                     </li>
                   </ul>
@@ -137,8 +136,12 @@
           <h2 class="section-title mb-3">Categories</h2>
           <div class="widget-body">
             <ul class="widget-list">
-             @foreach (\App\Models\Category::all() as $category)
-             <li><a href="#!">{{$category}}<span class="ml-auto">(3)</span></a>
+             @foreach (\App\Models\Category::with('child')->get() as $category)
+             <li><a href="#!">{{$category->name}}<span class="ml-auto">({{$category->posts->count()}})</span></a>
+                @foreach ($category->child as $subcategory)
+                  <li><a href="#!">{{$subcategory->name}}<span class="ml-auto">({{$subcategory->posts->count()}})</span></a>
+                @endforeach
+              
              </li>
              @endforeach
               

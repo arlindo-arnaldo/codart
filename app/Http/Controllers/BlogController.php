@@ -34,6 +34,7 @@ class BlogController extends Controller
             ->limit(4)
             ->inRandomOrder()
             ->get();
+            dd($latest_post);
 
         
         
