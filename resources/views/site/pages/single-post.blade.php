@@ -33,9 +33,6 @@
                     <div id="disqus_thread"></div>
                     <script type="application/javascript">
                         var disqus_config = function() {
-
-
-
                         };
                         (function() {
                             if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
