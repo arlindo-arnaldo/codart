@@ -42,8 +42,13 @@ class BlogController extends Controller
             $posts = $category->posts;
         } else {
             $category = SubCategory::where('slug', $slug)->first();
-            $posts = $category->posts;
+            if ($category) {
+                $posts = $category->posts;
+            }else{
+                $posts = [];
+            }
+            
         }
-        return view('site.pages.categories', compact(['posts']));
+        return view('site.pages.categories', compact(['posts', 'category']));
     }
 }
