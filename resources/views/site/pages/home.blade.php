@@ -13,22 +13,22 @@
             <article class="card article-card">
               <a href="article.html">
                 <div class="card-image">
-                  <div class="post-info"> <span class="text-uppercase">{{date('d M Y', strtotime($latest_post->created_at))}}</span>
+                  <div class="post-info"> <span class="text-uppercase">{{date('d M Y', strtotime(latestPost()->created_at))}}</span>
                     <span class="text-uppercase">3 minutes read</span>
                   </div>
-                  <img loading="lazy" decoding="async" src="/storage/{{$latest_post->thumbnail->path}}" alt="Post Thumbnail" class="w-100">
+                  <img loading="lazy" decoding="async" src="/storage/{{latestPost()->thumbnail->path}}" alt="Post Thumbnail" class="w-100">
                 </div>
               </a>
               <div class="card-body px-0 pb-1">
                 <ul class="post-meta mb-2">
                   <li>
-                    <a href="{{$latest_post->category->slug}}">{{$latest_post->category->name}}</a>
-                    <a href="{{$latest_post->subcategory->slug}}">{{$latest_post->subcategory->name}}</a>
+                    <a href="{{latestPost()->category->slug}}">{{latestPost()->category->name}}</a>
+                    <a href="{{latestPost()->subcategory->slug}}">{{latestPost()->subcategory->name}}</a>
                   </li>
                 </ul>
-                <h2 class="h1"><a class="post-title" href="{{$latest_post->slug}}">{{$latest_post->title}}.</a></h2>
-                <p class="card-text">{{ $latest_post->body }}</p>
-                <div class="content"> <a class="read-more-btn" href="{{$latest_post->slug}}">Ler mais</a>
+                <h2 class="h1"><a class="post-title" href="{{latestPost()->slug}}">{{latestPost()->title}}.</a></h2>
+                <p class="card-text">{{ latestPost()->body }}</p>
+                <div class="content"> <a class="read-more-btn" href="{{latestPost()->slug}}">Ler mais</a>
                 </div>
               </div>
             </article>

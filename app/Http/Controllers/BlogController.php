@@ -18,27 +18,11 @@ class BlogController extends Controller
         ->with('author')
         ->with('thumbnail')
         ->get();
-
-        $latest_post = Post::orderBy('created_at', 'desc')
-        ->limit(1)
-        ->with('category')
-        ->with('subcategory')
-        ->with('author')
-        ->with('thumbnail')
-        ->first();
-        $latest_post->body = Str::ucfirst(Str::words(strip_tags($latest_post->body), 35, '...'));
-
-        $recommended_posts = Post::with('author')
-            ->with('subcategory')
-            ->with('thumbnail')
-            ->limit(4)
-            ->inRandomOrder()
-            ->get();
-        return view('site.pages.home', compact(['latest_post', 'posts', 'recommended_posts']));
+        return view('site.pages.home', compact(['posts']));
     }
 
     public function show($slug){
         $post = Post::where('slug', $slug)->limit(1)->first();
-        dd($post);
+        return view('site.pages.single-post');
     }
 }

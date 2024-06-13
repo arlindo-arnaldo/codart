@@ -11,14 +11,14 @@
             </div>
           </div>
         </div>
-        @if ($recommended_posts)
+        @if (recommendedPosts())
         <div class="col-lg-12 col-md-6">
           <div class="widget">
             <h2 class="section-title mb-3">Recomendados</h2>
             <div class="widget-body">
               <div class="widget-list">
 
-                @foreach ($recommended_posts as $post)
+                @foreach (recommendedPosts() as $post)
                 <a class="media align-items-center" href="{{$post->slug}}">
                   <img loading="lazy" decoding="async" src="/storage/{{$post->thumbnail->path}}" alt="Post Thumbnail" class="w-100">
                   <div class="media-body ml-3">
