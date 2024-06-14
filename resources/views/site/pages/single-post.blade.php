@@ -21,7 +21,7 @@
                     <ul class="post-meta mb-4">
                         <li> <a href="{{route('category', $post->category->slug)}}">{{$post->category->name}}</a> </li>
                             @if ($post->subcategory)
-                            <li> <a href="{{route('category', $post->subcategory->slug)}}">{{$post->subcategory->name}}</a></li>
+                            <li> <a href="/categories/{{$post->subcategory->parentCategory->slug}}/{{$post->subcategory->slug}}">{{$post->subcategory->name}}</a></li>
                             @endif
                     </ul>
                     <div class="content text-left">
