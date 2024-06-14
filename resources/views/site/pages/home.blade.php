@@ -11,7 +11,7 @@
         <div class="row">
           <div class="col-12 mb-4">
             <article class="card article-card">
-              <a href="article.html">
+              <a href="{{latestPost()->slug}}">
                 <div class="card-image">
                   <div class="post-info"> <span class="text-uppercase">{{date('d M Y', strtotime(latestPost()->created_at))}}</span>
                     <span class="text-uppercase">3 minutes read</span>
@@ -37,7 +37,7 @@
           @foreach ($posts as $post)
           <div class="col-md-6 mb-4">
             <article class="card article-card article-card-sm h-100">
-              <a href="article.html">
+              <a href="{{$post->slug}}">
                 <div class="card-image">
                   <div class="post-info"> <span class="text-uppercase">{{date('d M Y', strtotime($post->created_at))}}</span>
                     <span class="text-uppercase">2 minutes read</span>

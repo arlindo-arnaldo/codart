@@ -46,5 +46,7 @@
                 </div>
             </div>
             @include('site.includes.sidebar')
+            @else
+            @include('site.errors.404')
             @endif
             @endsection
