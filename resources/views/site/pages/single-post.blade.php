@@ -1,5 +1,5 @@
 @extends('site.layouts.pages')
-@section('title', "{{$post->name}}")
+@section('title', "")
 @section('content')
 <section class="section">
     <div class="container">
@@ -19,7 +19,7 @@
                     </ul>
                     <h1 class="my-3">{{$post->title}}</h1>
                     <ul class="post-meta mb-4">
-                        <li> <a href="{{route('category', $post->subcategory->slug)}}">{{$post->category->name}}</a> </li>
+                        <li> <a href="{{route('category', $post->category->slug)}}">{{$post->category->name}}</a> </li>
                             @if ($post->subcategory)
                             <li> <a href="{{route('category', $post->subcategory->slug)}}">{{$post->subcategory->name}}</a></li>
                             @endif

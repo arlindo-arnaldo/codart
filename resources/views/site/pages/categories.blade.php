@@ -7,8 +7,11 @@
             @if ($posts)
             <div class="col-12">
                 <div class="breadcrumbs mb-4"> <a href="index.html">Home</a>
-                    <span class="mx-1">/</span> <a href="#!">Articles</a>
-                    <span class="mx-1">/</span> <a href="#!">Travel</a>
+                    @if ($category->parentCategory)
+                    <span class="mx-1">/</span> <a href="#!">{{$category->parentCategory->name}}</a> 
+                    @endif
+                    
+                    <span class="mx-1">/</span> <a href="#!">{{$category->name}}</a>
                 </div>
                 <h1 class="mb-4 border-bottom border-primary d-inline-block">{{$category->name}}</h1>
             </div>
@@ -30,7 +33,7 @@
                                     <li> 
                                         <a href="{{route('category', $post->category->slug)}}">{{$post->category->slug}}</a>
                                         @if ($post->subcategory)
-                                        <a href="{{route('category', $post->subcategory->slug)}}">{{$post->subcategory->name}}</a>
+                                        <a href="/categories/{{$post->subcategory->parentCategory->slug}}/{{$post->subcategory->slug}}">{{$post->subcategory->name}}</a>
                                         @endif
                                     </li>
                                 </ul>

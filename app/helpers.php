@@ -16,14 +16,17 @@ if (!function_exists('recomendedPosts')) {
 
 if (!function_exists('latestPost')) {
     function latestPost(){
-        $latest_post = Post::orderBy('created_at', 'desc')
+        $latest_post = Post::orderBy('updated_at', 'desc')
+        ->where('is_active', 1)
         ->limit(1)
         ->with('category')
         ->with('subcategory')
         ->with('author')
         ->with('thumbnail')
         ->first();
-        $latest_post->body = summarize($latest_post->body, 35);
+        if ($latest_post) {
+            $latest_post->body = summarize($latest_post->body, 35);
+        }
         return $latest_post;
     }
 }

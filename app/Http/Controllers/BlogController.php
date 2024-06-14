@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\SubCategory;
 use Illuminate\Support\Str;
+use Illuminate\Validation\ConditionalRules;
 
 class BlogController extends Controller
 {
@@ -18,41 +19,65 @@ class BlogController extends Controller
     }
     public function index()
     {
-        $posts = $this->post->orderBy('created_at', 'desc')
+        $posts = $this->post->orderBy('updated_at', 'desc')
             ->limit(6)
+            ->where('is_active', 1)
             ->skip(1)
             ->with('category')
             ->with('subcategory')
             ->with('author')
             ->with('thumbnail')
             ->get();
+
         return view('site.pages.home', compact(['posts']));
     }
 
     public function show($slug)
     {
+
         $post = $this->post->where('slug', $slug)
             ->where('is_active', 1)
             ->first();
+
         return view('site.pages.single-post', compact(['post']));
     }
-    public function showCategory($slug)
+    public function showCategory($category_slug, $subcategory_slug = null)
     {
-        $category = Category::where('slug', $slug)->first();
-        
+        if (!$subcategory_slug) {
+            $category = Category::where('slug', $category_slug)->first();
+            if ($category) {
+                $posts = $this->post->where('category_id', $category->id)->where('is_active', 1)->get();
+            } else {
+                $posts = [];
+            }
+        } else {
+            $category = SubCategory::where('slug', $subcategory_slug)->first();
+            if ($category) {
+                if ($category->parentCategory->slug == $category_slug) {
+                    $posts = $this->post->where('subcategory_id', $category->id)->where('is_active', 1)->get();
+                } else {
+                    $posts = [];
+                }
+            }else{
+                $posts = [];
+            }
+        }
+        /*$category = Category::where('slug', $slug)->first();
+
         if ($category) {
             $category_id = $category->id;
             $posts = $this->post->where('category_id', $category_id)->where('is_active', 1)->get();
         } else {
-            $category = SubCategory::where('slug', $slug)->first();
+            $category = SubCategory::where('slug', $slug)->with('parentCategory')->first();
             if ($category) {
                 $category_id = $category->id;
                 $posts = $this->post->where('subcategory_id', $category_id)->where('is_active', 1)->get();
-            }else{
+            } else {
                 $posts = [];
-            }  
+            }
         }
-        
+        */
+
         return view('site.pages.categories', compact(['posts', 'category']));
     }
 }

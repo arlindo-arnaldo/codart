@@ -8,7 +8,7 @@ use App\Http\Livewire\Modal\UploadFile;
 
 Route::prefix('/admin')->name('admin.')->group(function(){
     Route::middleware('auth:web')->group(function(){
-        Route::view('/', 'admin.pages.home')->name('home');
+        Route::view('/dashboard', 'admin.pages.home')->name('home');
         Route::post('/logout', [AuthorController::class, 'logout'])->name('logout');
         Route::post('/change-profile-picture', [AuthorController::class, 'changeProfilePicture'])->name('change-profile-picture');
 

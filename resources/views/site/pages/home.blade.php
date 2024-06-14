@@ -10,6 +10,7 @@
       <div class="col-lg-8 mb-5 mb-lg-0">
         <div class="row">
           <div class="col-12 mb-4">
+            @if (latestPost())
             <article class="card article-card">
               <a href="{{latestPost()->slug}}">
                 <div class="card-image">
@@ -23,7 +24,9 @@
                 <ul class="post-meta mb-2">
                   <li>
                     <a href="{{route('category',latestPost()->category->slug)}}">{{latestPost()->category->name}}</a>
-                    <a href="{{route('category',latestPost()->subcategory->slug)}}">{{latestPost()->subcategory->name}}</a>
+                    @if (latestPost()->subcategory)
+                    <a href="/categories/{{latestPost()->subcategory->parentCategory->slug}}/{{latestPost()->subcategory->slug}}">{{latestPost()->subcategory->name}}</a>
+                    @endif
                   </li>
                 </ul>
                 <h2 class="h1"><a class="post-title" href="{{route('post', latestPost()->slug)}}">{{latestPost()->title}}.</a></h2>
@@ -32,6 +35,7 @@
                 </div>
               </div>
             </article>
+            @endif
           </div>
 
           @foreach ($posts as $post)
@@ -50,7 +54,7 @@
                   <li> <a href="{{route('category', $post->category->slug)}}">{{$post->category->name}}</a>
                   </li>
                   @if ($post->subcategory)
-                  <li> <a href="{{route('category', $post->subcategory->slug)}}">{{$post->subcategory->name}}</a>
+                  <li> <a href="/categories/{{$post->subcategory->parentCategory->slug}}/{{$post->subcategory->slug}}">{{$post->subcategory->name}}</a>
                   </li>
                   @endif
                 </ul>
