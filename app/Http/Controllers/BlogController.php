@@ -32,23 +32,27 @@ class BlogController extends Controller
     public function show($slug)
     {
         $post = $this->post->where('slug', $slug)
+            ->where('is_active', 1)
             ->first();
         return view('site.pages.single-post', compact(['post']));
     }
     public function showCategory($slug)
     {
         $category = Category::where('slug', $slug)->first();
+        
         if ($category) {
-            $posts = $category->posts;
+            $category_id = $category->id;
+            $posts = $this->post->where('category_id', $category_id)->where('is_active', 1)->get();
         } else {
             $category = SubCategory::where('slug', $slug)->first();
             if ($category) {
-                $posts = $category->posts;
+                $category_id = $category->id;
+                $posts = $this->post->where('subcategory_id', $category_id)->where('is_active', 1)->get();
             }else{
                 $posts = [];
-            }
-            
+            }  
         }
+        
         return view('site.pages.categories', compact(['posts', 'category']));
     }
 }
