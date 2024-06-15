@@ -13,7 +13,7 @@
               @endif
               @if ($type === 'category') 
               <h2 class="widget-title my-3">{{$data->name}}</h2>
-              <p class="mb-3 pb-2">{{$data->description}}</p> <a href="#" class="btn btn-sm btn-outline-primary">Saber Mais</a>
+              <p class="mb-3 pb-2">{{$data->description}}</p>
               @endif
             
             
