@@ -16,9 +16,7 @@ if (!function_exists('recommendedPosts')) {
 }
 if (!function_exists('recommendedPost')) {
     function recommendedPost(){
-         return  Post::inRandomOrder()
-         ->with('thumbnail')
-            ->first();
+         return  Post::inRandomOrder()->limit(1)->get();
     }
 }
 
