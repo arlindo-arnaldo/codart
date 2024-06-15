@@ -21,7 +21,7 @@
                 @foreach (recommendedPost() as $post)
                 <article class="card mb-4">
                   <div class="card-image">
-                    <div class="post-info"> <span class="text-uppercase">1 minutes read</span>
+                    <div class="post-info"> <span class="text-uppercase">{{readDuration($post->title, $post->body)}} @choice('min|mins', readDuration($post->title, $post->body)) de leitura</span>
                     </div>
                     <img loading="lazy" decoding="async" src="/storage/{{$post->thumbnail->path}}" alt="Post Thumbnail" class="w-100">
                   </div>

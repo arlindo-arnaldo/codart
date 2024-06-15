@@ -15,7 +15,7 @@
               <a href="{{latestPost()->slug}}">
                 <div class="card-image">
                   <div class="post-info"> <span class="text-uppercase">{{date('d M Y', strtotime(latestPost()->created_at))}}</span>
-                    <span class="text-uppercase">3 minutes read</span>
+                    <span class="text-uppercase">{{readDuration(latestPost()->title, latestPost()->body)}} @choice('min|mins', readDuration(latestPost()->title, latestPost()->body)) de leitura </span>
                   </div>
                   <img loading="lazy" decoding="async" src="/storage/{{latestPost()->thumbnail->path}}" alt="Post Thumbnail" class="w-100">
                 </div>
@@ -44,7 +44,7 @@
               <a href="{{$post->slug}}">
                 <div class="card-image">
                   <div class="post-info"> <span class="text-uppercase">{{date('d M Y', strtotime($post->created_at))}}</span>
-                    <span class="text-uppercase">2 minutes read</span>
+                    <span class="text-uppercase">{{readDuration($post->title, $post->body)}} @choice('min|mins', readDuration($post->title,$post->body)) de leitura</span>
                   </div>
                   <img loading="lazy" decoding="async" src="/storage/{{$post->thumbnail->path}}" alt="Post Thumbnail" class="w-100">
                 </div>

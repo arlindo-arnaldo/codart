@@ -60,6 +60,7 @@ class BlogController extends Controller
                 }
             }else{
                 $posts = [];
+                
             }
         }
         /*$category = Category::where('slug', $slug)->first();
