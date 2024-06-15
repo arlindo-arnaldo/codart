@@ -52,13 +52,17 @@
         @endif
         <div class="col-lg-12 col-md-6">
           <div class="widget">
-            <h2 class="section-title mb-3">Categories</h2>
+            <h2 class="section-title mb-3">Categorias</h2>
             <div class="widget-body">
               <ul class="widget-list">
                 @foreach (\App\Models\Category::with('child')->get() as $category)
-                <li><a href="{{route('category', $category->slug)}}">{{$category->name}}<span class="ml-auto">({{$category->posts->count()}})</span></a>
+                @if ($category->posts->count())
+                    <li><a href="{{route('category', $category->slug)}}">{{$category->name}}<span class="ml-auto">  ({{$category->posts->count()}})</span></a>
+                @endif
                   @foreach ($category->child as $subcategory)
-                <li><a href="{{route('category', $subcategory->slug)}}">{{$subcategory->name}}<span class="ml-auto">({{$subcategory->posts->count()}})</span></a>
+                      @if ($subcategory->posts->count())
+                      <li><a href="{{route('category', $subcategory->slug)}}">{{$subcategory->name}}<span class="ml-auto">({{$subcategory->posts->count()}})</span></a>
+                      @endif
                   @endforeach
 
                 </li>

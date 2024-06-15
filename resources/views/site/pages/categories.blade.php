@@ -8,7 +8,7 @@
             <div class="col-12">
                 <div class="breadcrumbs mb-4"> <a href="{{route('home')}}">Home</a>
                     @if ($category->parentCategory)
-                    <span class="mx-1">/</span> <a href="#!">{{$category->parentCategory->name}}</a> 
+                    <span class="mx-1">/</span> <a href="/categories/{{$category->parentCategory->slug}}">{{$category->parentCategory->name}}</a> 
                     @endif
                     
                     <span class="mx-1">/</span> <a href="#!">{{$category->name}}</a>
@@ -23,7 +23,7 @@
                             <a href="article.html">
                                 <div class="card-image">
                                     <div class="post-info"> <span class="text-uppercase">{{date('d M Y', strtotime($post->created_at))}}</span>
-                                        <span class="text-uppercase">3 minutes read</span>
+                                        <span class="text-uppercase">{{readDuration($post->title, $post->body)}} @choice('min|mins', readDuration($post->title, $post->body)) de leitura</span>
                                     </div>
                                     <img loading="lazy" decoding="async" src="/storage/{{$post->thumbnail->path}}" alt="Post Thumbnail" class="w-100" width="420" height="280">
                                 </div>
