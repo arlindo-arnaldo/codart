@@ -1,5 +1,5 @@
 @extends('site.layouts.pages')
-@section('title', 'home')
+@section('title', 'Artigos')
 @section('content')
 <section class="section">
     <div class="container">
@@ -7,18 +7,18 @@
             @if ($posts)
             <div class="col-12">
                 <div class="breadcrumbs mb-4"> <a href="{{route('home')}}">Home</a>
-                    @if ($category->parentCategory)
-                    <span class="mx-1">/</span> <a href="/categories/{{$category->parentCategory->slug}}">{{$category->parentCategory->name}}</a> 
-                    @endif
+                   
+                    <span class="mx-1">/</span> <a href="#">Artigos</a> 
                     
-                    <span class="mx-1">/</span> <a href="#!">{{$category->name}}</a>
+                    
+                    
                 </div>
-                <h1 class="mb-4 border-bottom border-primary d-inline-block">{{$category->name}}</h1>
+                <h1 class="mb-4 border-bottom border-primary d-inline-block">Artigos</h1>
             </div>
-            <div class="col-lg-8 mb-5 mb-lg-0">
+            <div class="col-lg-12 mb-5 mb-lg-0">
                 <div class="row">
                     @foreach ($posts as $post)
-                    <div class="col-md-6 mb-4">
+                    <div class="col-md-4 mb-4">
                         <article class="card article-card article-card-sm h-100">
                             <a href="{{$post->slug}}">
                                 <div class="card-image">
@@ -61,7 +61,7 @@
 
                 </div>
             </div>
-            @include('site.includes.sidebar', ['type'=>'category', 'data' =>$category])
+            
             @else
             @include('site.errors.404')
             @endif

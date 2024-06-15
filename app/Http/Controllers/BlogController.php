@@ -34,19 +34,24 @@ class BlogController extends Controller
 
     public function show($slug)
     {
-
+        if ($slug == 'articles') {
+            return  $this->showPosts();
+        }
         $post = $this->post->where('slug', $slug)
             ->where('is_active', 1)
             ->first();
-
         return view('site.pages.single-post', compact(['post']));
+    }
+    public function showPosts(){
+        $posts = $this->post->paginate(9);
+        return view('site.pages.posts', compact(['posts']));
     }
     public function showCategory($category_slug, $subcategory_slug = null)
     {
         if (!$subcategory_slug) {
             $category = Category::where('slug', $category_slug)->first();
             if ($category) {
-                $posts = $this->post->where('category_id', $category->id)->where('is_active', 1)->get();
+                $posts = $this->post->where('category_id', $category->id)->where('is_active', 1)->paginate(6);
             } else {
                 $posts = [];
             }
@@ -54,7 +59,7 @@ class BlogController extends Controller
             $category = SubCategory::where('slug', $subcategory_slug)->first();
             if ($category) {
                 if ($category->parentCategory->slug == $category_slug) {
-                    $posts = $this->post->where('subcategory_id', $category->id)->where('is_active', 1)->get();
+                    $posts = $this->post->where('subcategory_id', $category->id)->where('is_active', 1)->paginate(6);
                 } else {
                     $posts = [];
                 }
@@ -63,21 +68,7 @@ class BlogController extends Controller
                 
             }
         }
-        /*$category = Category::where('slug', $slug)->first();
-
-        if ($category) {
-            $category_id = $category->id;
-            $posts = $this->post->where('category_id', $category_id)->where('is_active', 1)->get();
-        } else {
-            $category = SubCategory::where('slug', $slug)->with('parentCategory')->first();
-            if ($category) {
-                $category_id = $category->id;
-                $posts = $this->post->where('subcategory_id', $category_id)->where('is_active', 1)->get();
-            } else {
-                $posts = [];
-            }
-        }
-        */
+       
 
         return view('site.pages.categories', compact(['posts', 'category']));
     }
