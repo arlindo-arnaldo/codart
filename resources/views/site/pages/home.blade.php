@@ -24,15 +24,15 @@
               <div class="card-body px-0 pb-1">
                 <ul class="post-meta mb-2">
                   <li>
-                    <a href="{{route('category',$post->category->slug)}}">{{$post->category->name}}</a>
+                    <a href="{{route('category.show',$post->category->slug)}}">{{$post->category->name}}</a>
                     @if ($post->subcategory)
                     <a href="/categories/{{$post->subcategory->parentCategory->slug}}/{{$post->subcategory->slug}}">{{$post->subcategory->name}}</a>
                     @endif
                   </li>
                 </ul>
-                <h2 class="h1"><a class="post-title" href="{{route('post', $post->slug)}}">{{$post->title}}.</a></h2>
+                <h2 class="h1"><a class="post-title" href="{{route('post.show', $post->slug)}}">{{$post->title}}.</a></h2>
                 <p class="card-text">{{summarize( $post->body, 35) }}</p>
-                <div class="content"> <a class="read-more-btn" href="{{route('post', $post->slug)}}">Ler mais</a>
+                <div class="content"> <a class="read-more-btn" href="{{route('post.show', $post->slug)}}">Ler mais</a>
                 </div>
               </div>
             </article>
@@ -53,14 +53,14 @@
               </a>
               <div class="card-body px-0 pb-0">
                 <ul class="post-meta mb-2">
-                  <li> <a href="{{route('category', $post->category->slug)}}">{{$post->category->name}}</a>
+                  <li> <a href="{{route('category.show', $post->category->slug)}}">{{$post->category->name}}</a>
                   </li>
                   @if ($post->subcategory)
                   <li> <a href="/categories/{{$post->subcategory->parentCategory->slug}}/{{$post->subcategory->slug}}">{{$post->subcategory->name}}</a>
                   </li>
                   @endif
                 </ul>
-                <h2><a class="post-title" href="{{route('post', $post->slug)}}">{{$post->title}}</a></h2>
+                <h2><a class="post-title" href="{{route('post.show', $post->slug)}}">{{$post->title}}</a></h2>
                 <p class="card-text">{{Str::ucfirst(Str::words(strip_tags($post->body), 20, '...'))}}</p>
                 <div class="content"> <a class="read-more-btn" href="{{$post->slug}}">Ler Mais</a>
                 </div>

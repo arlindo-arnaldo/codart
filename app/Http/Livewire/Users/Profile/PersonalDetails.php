@@ -7,7 +7,7 @@ use App\Models\User;
 
 class PersonalDetails extends Component
 {
-    public $name, $username, $email;
+    public $name, $username, $email, $about;
 
     
 
@@ -17,6 +17,7 @@ class PersonalDetails extends Component
             $this->name = $user->name;
             $this->username = $user->username;
             $this->email = $user->email;
+            $this->about = $user->about;
         }
 
     }
@@ -39,6 +40,7 @@ class PersonalDetails extends Component
         $user->name = $this->name;
         $user->username = $this->username;
         $user->email = $this->email;
+        $user->about = $this->about;
 
         if($user->update()){
             $this->emit('updateTopHeader');

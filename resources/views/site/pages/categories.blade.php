@@ -31,15 +31,15 @@
                             <div class="card-body px-0 pb-0">
                                 <ul class="post-meta mb-2">
                                     <li> 
-                                        <a href="{{route('category', $post->category->slug)}}">{{$post->category->slug}}</a>
+                                        <a href="{{route('category.show', $post->category->slug)}}">{{$post->category->slug}}</a>
                                         @if ($post->subcategory)
                                         <a href="/categories/{{$post->subcategory->parentCategory->slug}}/{{$post->subcategory->slug}}">{{$post->subcategory->name}}</a>
                                         @endif
                                     </li>
                                 </ul>
-                                <h2><a class="post-title" href="{{route('post', $post->slug)}}">{{$post->title}}.</a></h2>
+                                <h2><a class="post-title" href="{{route('post.show', $post->slug)}}">{{$post->title}}.</a></h2>
                                 <p class="card-text">{{summarize($post->body, 30)}}</p>
-                                <div class="content"> <a class="read-more-btn" href="{{route('post', $post->slug)}}">Ler Mais</a>
+                                <div class="content"> <a class="read-more-btn" href="{{route('post.show', $post->slug)}}">Ler Mais</a>
                                 </div>
                             </div>
                         </article>
@@ -48,7 +48,7 @@
 
                 </div>
             </div>
-            @include('site.includes.sidebar')
+            @include('site.includes.sidebar', ['type'=>'category', 'data' =>$category])
             @else
             @include('site.errors.404')
             @endif

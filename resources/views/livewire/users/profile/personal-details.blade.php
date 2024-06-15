@@ -41,7 +41,7 @@
             <div class="col-md-12">
               <div class="mb-3 mb-0">
                 <label class="form-label">Sobre mim</label>
-                <textarea rows="5" class="form-control" placeholder="Aqui você pode falar um pouco sobre você" value="Mike"></textarea>
+                <textarea rows="5" class="form-control" placeholder="Aqui você pode falar um pouco sobre você" value="Mike" wire:model="about"></textarea>
               </div>
             </div>
           </div>

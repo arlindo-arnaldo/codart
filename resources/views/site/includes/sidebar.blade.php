@@ -3,12 +3,21 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="widget">
+            @if ($data)
             <div class="widget-body">
-              <img loading="lazy" decoding="async" src="images/author.jpg" alt="About Me" class="w-100 author-thumb-sm d-block">
-              <h2 class="widget-title my-3">Hootan Safiyari</h2>
-              <p class="mb-3 pb-2">Hello, I’m Hootan Safiyari. A Content writter, Developer and Story teller. Working as a Content writter at CoolTech Agency. Quam nihil …</p> <a href="about.html" class="btn btn-sm btn-outline-primary">Know
-                More</a>
-            </div>
+              @if ($type === 'post')
+              <img loading="lazy" decoding="async" src="/storage/users/{{$data->author->photo}}" alt="About Me" class="w-100 author-thumb-sm d-block">
+              <h2 class="widget-title my-3">{{$data->author->name}}</h2>
+              <p class="mb-3 pb-2">{{$data->author->about}} …</p> <a href="#" class="btn btn-sm btn-outline-primary">Saber Mais</a>
+              @endif
+              @if ($type === 'category') 
+              <h2 class="widget-title my-3">{{$data->name}}</h2>
+              <p class="mb-3 pb-2">{{$data->description}} …</p> <a href="#" class="btn btn-sm btn-outline-primary">Saber Mais</a>
+              @endif
+            
+            
+          </div>
+            @endif
           </div>
         </div>
         @if (recommendedPosts())
@@ -36,7 +45,7 @@
                 @endforeach
 
                 @foreach (recommendedPosts() as $post)
-                <a class="media align-items-center" href="{{route('post', $post->slug)}}">
+                <a class="media align-items-center" href="{{route('post.show', $post->slug)}}">
                   <img loading="lazy" decoding="async" src="/storage/{{$post->thumbnail->path}}" alt="Post Thumbnail" class="w-100">
                   <div class="media-body ml-3">
                     <h3 style="margin-top:-5px">{{$post->title}}</h3>
@@ -57,11 +66,11 @@
               <ul class="widget-list">
                 @foreach (\App\Models\Category::with('child')->get() as $category)
                 @if ($category->posts->count())
-                    <li><a href="{{route('category', $category->slug)}}">{{$category->name}}<span class="ml-auto">  ({{$category->posts->count()}})</span></a>
+                    <li><a href="{{route('category.show', $category->slug)}}">{{$category->name}}<span class="ml-auto">  ({{$category->posts->count()}})</span></a>
                 @endif
                   @foreach ($category->child as $subcategory)
                       @if ($subcategory->posts->count())
-                      <li><a href="{{route('category', $subcategory->slug)}}">{{$subcategory->name}}<span class="ml-auto">({{$subcategory->posts->count()}})</span></a>
+                      <li><a href="{{route('category.show', $subcategory->slug)}}">{{$subcategory->name}}<span class="ml-auto">({{$subcategory->posts->count()}})</span></a>
                       @endif
                   @endforeach
 

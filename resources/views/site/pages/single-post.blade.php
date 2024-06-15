@@ -19,7 +19,7 @@
                     </ul>
                     <h1 class="my-3">{{$post->title}}</h1>
                     <ul class="post-meta mb-4">
-                        <li> <a href="{{route('category', $post->category->slug)}}">{{$post->category->name}}</a> </li>
+                        <li> <a href="{{route('category.show', $post->category->slug)}}">{{$post->category->name}}</a> </li>
                             @if ($post->subcategory)
                             <li> <a href="/categories/{{$post->subcategory->parentCategory->slug}}/{{$post->subcategory->slug}}">{{$post->subcategory->name}}</a></li>
                             @endif
@@ -56,7 +56,7 @@
 
 
 
-            @include('site.includes.sidebar')
+            @include('site.includes.sidebar', ['type' => 'post', 'data'=>$post])
              @else
              @include('site.errors.404')
             @endif
