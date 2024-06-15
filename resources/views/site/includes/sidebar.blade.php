@@ -18,6 +18,21 @@
             <div class="widget-body">
               <div class="widget-list">
 
+                <article class="card mb-4">
+                  <div class="card-image">
+                    <div class="post-info"> <span class="text-uppercase">1 minutes read</span>
+                    </div>
+                    <img loading="lazy" decoding="async" src="/storage/{{recommendedPost()->thumbnail->path}}" alt="Post Thumbnail" class="w-100">
+                  </div>
+                  <div class="card-body px-0 pb-1">
+                    <h3><a class="post-title post-title-sm"
+                        href="{{$post->slug}}">{{recommendedPost()->title}} </a></h3>
+                    <p class="card-text">{{summarize(recommendedPost()->body, 7)}}</p>
+                    <div class="content"> <a class="read-more-btn" href="article.html">Ler Mais</a>
+                    </div>
+                  </div>
+                </article>
+
                 @foreach (recommendedPosts() as $post)
                 <a class="media align-items-center" href="{{route('post', $post->slug)}}">
                   <img loading="lazy" decoding="async" src="/storage/{{$post->thumbnail->path}}" alt="Post Thumbnail" class="w-100">

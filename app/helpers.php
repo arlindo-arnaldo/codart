@@ -3,7 +3,7 @@
 use App\Models\Post;
 use Illuminate\Support\Str;
 
-if (!function_exists('recomendedPosts')) {
+if (!function_exists('recommendedPosts')) {
     function recommendedPosts(){
        return  Post::with('author')
             ->with('subcategory')
@@ -11,6 +11,14 @@ if (!function_exists('recomendedPosts')) {
             ->limit(6)
             ->inRandomOrder()
             ->get();
+            
+    }
+}
+if (!function_exists('recommendedPost')) {
+    function recommendedPost(){
+         return  Post::inRandomOrder()
+         ->with('thumbnail')
+            ->first();
     }
 }
 
