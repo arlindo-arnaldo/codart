@@ -7,11 +7,11 @@
             @if ($posts)
             <div class="col-12">
                 <div class="breadcrumbs mb-4"> <a href="{{route('home')}}">Home</a>
-                   
-                    <span class="mx-1">/</span> <a href="#">Artigos</a> 
-                    
-                    
-                    
+
+                    <span class="mx-1">/</span> <a href="#">Artigos</a>
+
+
+
                 </div>
                 <h1 class="mb-4 border-bottom border-primary d-inline-block">Artigos</h1>
             </div>
@@ -30,7 +30,7 @@
                             </a>
                             <div class="card-body px-0 pb-0">
                                 <ul class="post-meta mb-2">
-                                    <li> 
+                                    <li>
                                         <a href="{{route('category.show', $post->category->slug)}}">{{$post->category->slug}}</a>
                                         @if ($post->subcategory)
                                         <a href="/categories/{{$post->subcategory->parentCategory->slug}}/{{$post->subcategory->slug}}">{{$post->subcategory->name}}</a>
@@ -47,21 +47,21 @@
                     @endforeach
                     <div class="col-12">
                         <div class="row">
-                          <div class="col-12">
-                            <nav class="mt-4">
-                              <!-- pagination -->
-                              <nav class="mb-md-50">
-                                {{ $posts->links('pagination::bootstrap-4') }}
-                                </ul>
-                              </nav>
-                            </nav>
-                          </div>
+                            <div class="col-12">
+                                <nav class="mt-4">
+                                    <!-- pagination -->
+                                    <nav class="mb-md-50">
+                                        {{ $posts->links('pagination::bootstrap-4') }}
+                                        </ul>
+                                    </nav>
+                                </nav>
+                            </div>
                         </div>
-                      </div>
+                    </div>
 
                 </div>
             </div>
-            
+
             @else
             @include('site.errors.404')
             @endif

@@ -28,7 +28,6 @@ class BlogController extends Controller
             ->with('author')
             ->with('thumbnail')
             ->get();
-
         return view('site.pages.home', compact(['posts']));
     }
 
@@ -42,7 +41,8 @@ class BlogController extends Controller
             ->first();
         return view('site.pages.single-post', compact(['post']));
     }
-    public function showPosts(){
+    public function showPosts()
+    {
         $posts = $this->post->paginate(9);
         return view('site.pages.posts', compact(['posts']));
     }
@@ -63,12 +63,11 @@ class BlogController extends Controller
                 } else {
                     $posts = [];
                 }
-            }else{
+            } else {
                 $posts = [];
-                
             }
         }
-       
+
 
         return view('site.pages.categories', compact(['posts', 'category']));
     }

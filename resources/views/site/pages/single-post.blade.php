@@ -58,6 +58,6 @@
 
             @include('site.includes.sidebar', ['type' => 'post', 'data'=>$post])
              @else
-             @include('site.errors.404')
+                @include('site.errors.404')
             @endif
             @endsection
