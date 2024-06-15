@@ -68,7 +68,7 @@
                 @endif
                 @foreach ($category->child as $subcategory)
                 @if ($subcategory->posts->count())
-              <li><a href="{{route('category.show', $subcategory->slug)}}">{{$subcategory->name}}<span class="ml-auto">({{$subcategory->posts->count()}})</span></a>
+              <li><a href="/categories/{{$subcategory->parentCategory->slug}}/{{$subcategory->slug}}">{{$subcategory->name}}<span class="ml-auto">({{$subcategory->posts->count()}})</span></a>
                 @endif
                 @endforeach
 
