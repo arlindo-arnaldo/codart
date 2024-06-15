@@ -17,13 +17,13 @@
             <li class="nav-item"> <a class="nav-link" href="about.html">Artigos</a>
             </li>
             @foreach (\App\Models\Category::whereHas('child', function($q){$q->whereHas('posts');})->get() as $category)
-            <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" role="button"
+            <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="/categories/{{$category->slug}}" role="button"
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               {{$category->name}}
             </a>
             <div class="dropdown-menu">
               @foreach (\App\Models\SubCategory::where('parent_id', $category->id)->whereHas('posts')->get() as $subcategory)
-                  <a class="dropdown-item" href="travel.html">{{$subcategory->name}}</a>
+                  <a class="dropdown-item" href="/categories/{{$category->slug}}/{{$subcategory->slug}}">{{$subcategory->name}}</a>
               @endforeach
                
               
