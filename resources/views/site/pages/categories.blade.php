@@ -6,7 +6,7 @@
         <div class="row">
             @if ($posts)
             <div class="col-12">
-                <div class="breadcrumbs mb-4"> <a href="index.html">Home</a>
+                <div class="breadcrumbs mb-4"> <a href="{{route('home')}}">Home</a>
                     @if ($category->parentCategory)
                     <span class="mx-1">/</span> <a href="#!">{{$category->parentCategory->name}}</a> 
                     @endif
@@ -39,7 +39,7 @@
                                 </ul>
                                 <h2><a class="post-title" href="{{route('post', $post->slug)}}">{{$post->title}}.</a></h2>
                                 <p class="card-text">{{summarize($post->body, 30)}}</p>
-                                <div class="content"> <a class="read-more-btn" href="/articles/travel/post-1/">Read Full Article</a>
+                                <div class="content"> <a class="read-more-btn" href="{{route('post', $post->slug)}}">Ler Mais</a>
                                 </div>
                             </div>
                         </article>
