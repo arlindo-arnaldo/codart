@@ -1,9 +1,10 @@
 <div class="col-lg-4">
     <div class="widget-blocks">
       <div class="row">
+        @if ($data)
         <div class="col-lg-12">
           <div class="widget">
-            @if ($data)
+            
             <div class="widget-body">
               @if ($type === 'post')
               <img loading="lazy" decoding="async" src="/storage/users/{{$data->author->photo}}" alt="About Me" class="w-100 author-thumb-sm d-block">
@@ -17,9 +18,10 @@
             
             
           </div>
-            @endif
+            
           </div>
         </div>
+        @endif
         @if (recommendedPosts())
         <div class="col-lg-12 col-md-6">
           <div class="widget">

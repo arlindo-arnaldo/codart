@@ -18,7 +18,7 @@
                   <div class="post-info"> <span class="text-uppercase">{{date('d M Y', strtotime($post->created_at))}}</span>
                     <span class="text-uppercase">{{readDuration($post->title, $post->body)}} @choice('min|mins', readDuration($post->title, $post->body)) de leitura </span>
                   </div>
-                  <img loading="lazy" decoding="async" src="/storage/{{$post->thumbnail->path}}" alt="Post Thumbnail" class="w-100">
+                  <img loading="lazy" decoding="async" src="/storage/{{$post->thumbnail->path}}" alt="Post Thumbnail" class="w-100" style="max-height: 450px;">
                 </div>
               </a>
               <div class="card-body px-0 pb-1">
@@ -107,7 +107,7 @@
           </div>
         </div>
       </div>
-      @include('site.includes.sidebar')
+      @include('site.includes.sidebar', ['type' => '', 'data' => []])
     </div>
   </div>
 </section>

@@ -7,7 +7,7 @@
             @if ($post)
             <div class="col-lg-8 mb-5 mb-lg-0">
                 <article>
-                    <img loading="lazy" decoding="async" src="/storage/{{$post->thumbnail->path}}" alt="Post Thumbnail" class="w-100">
+                    <img loading="lazy" decoding="async" src="/storage/{{$post->thumbnail->path}}" alt="Post Thumbnail" class="w-100" style="max-height: 450px;">
                     <ul class="post-meta mb-2 mt-4">
                         <li>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" style="margin-right:5px;margin-top:-4px" class="text-dark" viewBox="0 0 16 16">
