@@ -37,10 +37,8 @@ if (!function_exists('latestPost')) {
         ->with('subcategory')
         ->with('author')
         ->with('thumbnail')
-        ->first();
-        if ($latest_post) {
-            $latest_post->body = summarize($latest_post->body, 35);
-        }
+        ->get();
+        
         return $latest_post;
     }
 }
