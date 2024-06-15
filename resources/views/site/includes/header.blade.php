@@ -14,17 +14,22 @@
         </form>
         <div class="collapse navbar-collapse text-center order-lg-2 order-4" id="navigation">
           <ul class="navbar-nav mx-auto mt-3 mt-lg-0">
-            <li class="nav-item"> <a class="nav-link" href="about.html">About Me</a>
+            <li class="nav-item"> <a class="nav-link" href="about.html">Artigos</a>
             </li>
+            @foreach (\App\Models\Category::whereHas('child', function($q){$q->whereHas('posts');})->get() as $category)
             <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" role="button"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Articles
-              </a>
-              <div class="dropdown-menu"> <a class="dropdown-item" href="travel.html">Travel</a>
-                <a class="dropdown-item" href="travel.html">Lifestyle</a>
-                <a class="dropdown-item" href="travel.html">Cruises</a>
-              </div>
-            </li>
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{$category->name}}
+            </a>
+            <div class="dropdown-menu">
+              @foreach (\App\Models\SubCategory::where('parent_id', $category->id)->whereHas('posts')->get() as $subcategory)
+                  <a class="dropdown-item" href="travel.html">{{$subcategory->name}}</a>
+              @endforeach
+               
+              
+            </div>
+          </li>
+            @endforeach
             <li class="nav-item"> <a class="nav-link" href="contact.html">Contact</a>
             </li>
           </ul>
