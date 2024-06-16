@@ -31,7 +31,7 @@
                   </li>
                 </ul>
                 <h2 class="h1"><a class="post-title" href="{{route('post.show', $post->slug)}}">{{$post->title}}.</a></h2>
-                <p class="card-text">{{summarize( $post->body, 35) }}</p>
+                <p class="card-text">{{summarize( $post->body, 35)}}</p>
                 <div class="content"> <a class="read-more-btn" href="{{route('post.show', $post->slug)}}">Ler mais</a>
                 </div>
               </div>

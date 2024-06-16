@@ -51,6 +51,7 @@ class NewUser extends Component
         $user->type = $this->type;
         $filename = 'IMG_'.strtotime(now()).rand(0,100).'.jpg';
         $user->photo = $filename;
+        $user->about = "Olá eu sou o ".$this->name.", autor deste artigo";
 
         if (!$this->photo) {
             $user->photo = 'default.jpg';

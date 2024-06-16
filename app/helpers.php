@@ -12,7 +12,7 @@ if (!function_exists('recommendedPosts')) {
        return  Post::with('author')
             ->with('subcategory')
             ->with('thumbnail')
-            ->limit(6)
+            ->limit(12)
             ->inRandomOrder()
             ->get();     
     }

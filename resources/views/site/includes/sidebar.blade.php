@@ -7,7 +7,8 @@
 
           <div class="widget-body">
             @if ($type === 'post')
-            <img loading="lazy" decoding="async" src="/storage/users/{{$data->author->photo}}" alt="About Me" class="w-100 author-thumb-sm d-block">
+            <img loading="lazy" decoding="async" src="/storage/users/{{$data->author->photo}}" alt="About Me" class="w-100 author-thumb-sm d-block"> <br>
+            <span class="text-muted">Sobre o Autor</span>
             <h2 class="widget-title my-3">{{$data->author->name}}</h2>
             <p class="mb-3 pb-2">{{summarize($data->author->about, 20)}} </p>
             @endif

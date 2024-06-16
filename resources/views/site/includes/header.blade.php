@@ -16,7 +16,7 @@
           <ul class="navbar-nav mx-auto mt-3 mt-lg-0">
             <li class="nav-item"> <a class="nav-link" href="{{route('articles')}}">Artigos</a>
             </li>
-            @foreach (\App\Models\Category::whereHas('child', function($q){$q->whereHas('posts');})->get() as $category)
+            @foreach (\App\Models\Category::whereHas('child', function($q){$q->whereHas('posts');})->where('slug', '!=', 'sem-categoria')->get() as $category)
             <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="/categories/{{$category->slug}}" role="button"
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               {{$category->name}}
