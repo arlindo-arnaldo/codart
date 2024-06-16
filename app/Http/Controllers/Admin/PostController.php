@@ -121,8 +121,6 @@ class PostController extends Controller
         }
 
         $this->post->is_active = $request->post_status;
-        $this->post->author_id = auth()->id();
-       
 
         
         if ($this->post->update()) {
