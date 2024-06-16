@@ -43,7 +43,7 @@ class BlogController extends Controller
     }
     public function showPosts()
     {
-        $posts = $this->post->where('is_active', 1)->paginate(9);
+        $posts = $this->post->where('is_active', 1)->orderby('created_at', 'desc')->paginate(9);
         return view('site.pages.posts', compact(['posts']));
     }
     public function showCategory($category_slug, $subcategory_slug = null)
