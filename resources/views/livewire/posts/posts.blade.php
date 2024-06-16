@@ -195,11 +195,12 @@
               
           @endforelse
           
-                         
+                        
         </tbody>
+        
       </table>
         <div class="m-4">
-          
+          {{$posts->links('pagination::bootstrap-4')}}
         </div>
     </div>
   </div>

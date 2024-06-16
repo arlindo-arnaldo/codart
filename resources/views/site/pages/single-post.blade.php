@@ -37,8 +37,6 @@
                 </div>
             </div>
 
-
-
             @include('site.includes.sidebar', ['type' => 'post', 'data'=>$post])
              @else
                 @include('site.errors.404')

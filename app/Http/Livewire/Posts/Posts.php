@@ -18,7 +18,7 @@ class Posts extends Component
     public function mount()
     {
         
-        $this->posts = Post::where('deleted_at', null)->orderBy('created_at', 'desc')->get();
+        $this->posts = Post::where('deleted_at', null)->orderBy('created_at', 'desc')->paginate(10);
         $this->tab = 'all';
         
     }
@@ -27,51 +27,51 @@ class Posts extends Component
     {
         switch ($filter) {
             case 0:
-                $this->posts = Post::orderBy('created_at', 'desc')->get();
+                $this->posts = Post::orderBy('created_at', 'desc')->paginate(10);
                 $this->tab = 'all';
                 break;
             case 1:
-                $this->posts = Post::where('author_id', auth()->id())->orderBy('created_at', 'desc')->get();
+                $this->posts = Post::where('author_id', auth()->id())->orderBy('created_at', 'desc')->paginate(10);
                 $this->tab = 'mine';
                 break;
 
             case 2:
-                $this->posts = Post::where('is_active', 1)->orderBy('created_at', 'desc')->get();
+                $this->posts = Post::where('is_active', 1)->orderBy('created_at', 'desc')->paginate(10);
                 $this->tab = 'published';
                 break;
 
             case 3:
-                $this->posts = Post::where('is_active', 0)->orderBy('created_at', 'desc')->get();
+                $this->posts = Post::where('is_active', 0)->orderBy('created_at', 'desc')->paginate(10);
                 $this->tab = 'draw';
                 break;
 
             case 4:
                 $this->tab = 'trash';
                 $this->posts = [];
-                $this->posts = Post::onlyTrashed()->get();
+                $this->posts = Post::onlyTrashed()->paginate(10);
                 break;
             default:
             $this->tab =  'all';
                 $this->posts = [];
-                $this->posts = Post::get();
+                $this->posts = Post::paginate(10);
         }
     }
 
     public function filterPostByCategory($cat_id){
 
         $this->posts = [];
-        $this->posts = Post::where('category_id', $cat_id)->get(); 
+        $this->posts = Post::where('category_id', $cat_id)->paginate(10); 
     }
 
     public function filterPostBySubCategory($subcat_id){
         $this->posts = [];
-        $this->posts = Post::where('subcategory_id', $subcat_id)->get();
+        $this->posts = Post::where('subcategory_id', $subcat_id)->paginate(10);
     }
 
     public function filterPostByUser($user_id){
         
         $this->posts = [];
-        $this->posts = Post::where('author_id', $user_id)->get();
+        $this->posts = Post::where('author_id', $user_id)->paginate(10);
     }
 
     public function publishPost($id)
