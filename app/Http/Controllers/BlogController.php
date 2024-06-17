@@ -71,4 +71,7 @@ class BlogController extends Controller
 
         return view('site.pages.categories', compact(['posts', 'category']));
     }
+    public function searchPost($search){
+        $posts = $this->post->where('title', 'like', '%'.$search.'%')->paginate(9);
+    }
 }
