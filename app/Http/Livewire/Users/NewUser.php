@@ -28,7 +28,7 @@ class NewUser extends Component
 
 
     public function generatePassword(){
-        $default_password =  strtoupper(Random::generate(10));
+        $default_password =  generatePassword(10);
         $this->password = $default_password;
     }
     public function resetForms(){
