@@ -35,9 +35,9 @@
                   <img loading="lazy" decoding="async" src="/storage/{{$post->thumbnail->path}}" alt="Post Thumbnail" class="w-100">
                 </div>
                 <div class="card-body px-0 pb-1">
-                  <h3><a class="post-title post-title-sm" href="{{$post->slug}}">{{$post->title}} </a></h3>
+                  <h3><a class="post-title post-title-sm" href="/{{$post->slug}}">{{$post->title}} </a></h3>
                   <p class="card-text">{{summarize($post->body, 7)}}</p>
-                  <div class="content"> <a class="read-more-btn" href="{{$post->slug}}">Ler Mais</a>
+                  <div class="content"> <a class="read-more-btn" href="/{{$post->slug}}">Ler Mais</a>
                   </div>
                 </div>
               </article>
