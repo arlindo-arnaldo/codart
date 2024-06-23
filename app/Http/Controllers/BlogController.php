@@ -20,7 +20,10 @@ class BlogController extends Controller
     public function index()
     {
         if (request()->search) {
-            $this->searchPost(request()->search);
+            
+            $search = request()->search;
+           $posts =  $this->searchPost($search);
+           return view('site.pages.search', compact(['posts', 'search']));
         }
         $posts = $this->post->orderBy('updated_at', 'desc')
             ->limit(6)
@@ -75,7 +78,7 @@ class BlogController extends Controller
         return view('site.pages.categories', compact(['posts', 'category']));
     }
     public function searchPost($search){
-        dd($search);
-        $posts = $this->post->where('title', 'like', '%'.$search.'%')->paginate(9);
+        
+        return $posts = $this->post->where('title', 'like', '%'.$search.'%')->orWhere('body', 'like', '%'.$search.'%')->paginate(9);
     }
 }

@@ -6,7 +6,7 @@
         <div class="row">
             @if ($posts)
             <div class="col-12">
-                <h1 class="mb-4 border-bottom border-primary d-inline-block">Resultados da pesquisa</h1>
+                <h1 class="mb-4 border-bottom border-primary d-inline-block">Resultados da pesquisa : {{$search}}</h1>
             </div>
             <div class="col-lg-12 mb-5 mb-lg-0">
                 <div class="row">
