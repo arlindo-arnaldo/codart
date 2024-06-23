@@ -1,5 +1,5 @@
 @extends('site.layouts.pages')
-@section('title', "")
+@section('title', $post->title)
 @section('content')
 <section class="section">
     <div class="container">
