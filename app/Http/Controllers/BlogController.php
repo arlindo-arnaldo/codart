@@ -19,6 +19,9 @@ class BlogController extends Controller
     }
     public function index()
     {
+        if (request()->search) {
+            $this->searchPost(request()->search);
+        }
         $posts = $this->post->orderBy('updated_at', 'desc')
             ->limit(6)
             ->where('is_active', 1)
@@ -72,6 +75,7 @@ class BlogController extends Controller
         return view('site.pages.categories', compact(['posts', 'category']));
     }
     public function searchPost($search){
+        dd($search);
         $posts = $this->post->where('title', 'like', '%'.$search.'%')->paginate(9);
     }
 }
