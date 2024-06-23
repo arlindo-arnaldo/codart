@@ -20,7 +20,7 @@
                     @foreach ($posts as $post)
                     <div class="col-md-6 mb-4">
                         <article class="card article-card article-card-sm h-100">
-                            <a href="{{$post->slug}}">
+                            <a href="/{{$post->slug}}">
                                 <div class="card-image">
                                     <div class="post-info"> <span class="text-uppercase">{{date('d M Y', strtotime($post->created_at))}}</span>
                                         <span class="text-uppercase">{{readDuration($post->title, $post->body)}} @choice('min|mins', readDuration($post->title, $post->body)) de leitura</span>
