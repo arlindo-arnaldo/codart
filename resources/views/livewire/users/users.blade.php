@@ -60,7 +60,7 @@
                           Editar
                         </a>
                         @if ($user->id != auth()->id())
-                          <a class="dropdown-item text-danger" href="#" wire:click.prevent="deleteUser({{$user->id}})">
+                          <a class="dropdown-item text-danger" href="{{route('admin.users.delete-user', $user->id)}}">
                             Excluir
                           </a>
                         @endif  

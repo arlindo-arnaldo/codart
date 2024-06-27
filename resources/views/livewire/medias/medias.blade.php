@@ -54,62 +54,6 @@
     @endforelse        
   </div>
 
-  <div wire:ignore.self class="modal modal-blur fade show" id="modal-large" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog  modal-full-width modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Detalhes do anexo</h5>
-          
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="row p-3">
-            <div class="col-md-8 ">
-              @if ($this->type == 'video')
-                  <video src="/storage/{{$this->path}}" style="width: 90%" controls></video>
-              @endif
-              @if ($this->type == 'audio')
-                  <audio src="/storage/{{$this->path}}" style="width: 90%" controls></audio>
-              @endif
-              @if ($this->type == 'image')
-                  <img src="/storage/{{$this->path}}" alt="" style="width: 80%;"> 
-              @endif
-              @if ($this->type == 'document')
-                  <h3>Documento</h3>
 
-              @endif
-              
-            </div>
-            <div class="col-md-4">
-            <div class="bg-gray">
-              Carregado aos : {{date('d-m-Y',strtotime($this->created_at))}}
-            </div>
-            <form action="">
-              <div class="form-group">
-                <span class="form-label">Titulo</span>
-                <input type="text" wire:model="title" class="form-control">
-              </div>
-              <div class="form-group">
-                <span class="form-label">Descrição</span>
-                <textarea class="form-control" wire:model="description"></textarea>
-              </div>
-              <div class="form-group">
-                <span class="form-label">Caminho</span>
-                <input type="text" class="form-control" value="{{$_ENV['APP_URL']}}/storage/{{$this->path}}" readonly disabled>
-              </div>
-              <div class="form-group mt-2">
-                <a wire:click="deleteFile()" class="text-danger" style="cursor: pointer">Excluir permanentemente</a>
-              </div>
-              <div class="form-group mt-5">
-                <button class="btn btn-primary" {{!$description ?'disabled' : ''}}>Salvar alterações</button>
-              </div>
-            </form>
-          </div>
-          </div>
-          
-    </div>
-  </div>
-</div>   
-</div>
 </div>
 

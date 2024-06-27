@@ -19,6 +19,8 @@ Route::prefix('/admin')->name('admin.')->group(function(){
                 Route::view('/', 'admin.pages.users.users')->name('users');
                 Route::view('new-user', 'admin.pages.users.new-user')->name('create-user');
                 Route::get('edit-user/{id}', [AuthorController::class, 'editUser'])->name('edit-user');
+                Route::get('delete-user/{id}', [AuthorController::class, 'deleteUser'])->name('delete-user');
+                Route::post('delete-user/{id}', [AuthorController::class, 'ConfirmDeleteUser'])->name('confirm-delete-user');
                 
             });
         });
